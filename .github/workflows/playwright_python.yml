@@ -9,7 +9,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    environment: env   # <-- use the environment you created
+    environment: env  # use your configured GitHub environment
 
     steps:
       - name: Checkout repository
@@ -21,17 +21,19 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Install Playwright browsers
-        run: |
-          playwright install --with-deps
+        run: playwright install --with-deps
 
-      - name: Run tests
+      - name: Run Playwright tests
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
-          USERNAME: ${{ secrets.USER_NAME }}
+          USER_NAME: ${{ secrets.USER_NAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
         run: |
-          pytest -v
+          # Ensure headless mode so it works on CI
+          export PLAYWRIGHT_HEADLESS=true
+          
+          # Run pytest with HTML report
+          pytest -v --html=reports/report.html --self-contained-html
