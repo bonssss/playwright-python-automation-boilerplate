@@ -18,5 +18,4 @@ class LoginPage(BasePage):
         self.login_button.click()
         time.sleep(5)  # Wait for 5 seconds after clicking login
 
-        print(USER_NAME)
-        print(PASSWORD)
+        
