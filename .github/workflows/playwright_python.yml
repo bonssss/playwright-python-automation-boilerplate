@@ -9,6 +9,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    environment: env   # <-- use the environment you created
 
     steps:
       - name: Checkout repository
@@ -28,5 +29,9 @@ jobs:
           playwright install --with-deps
 
       - name: Run tests
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+          USERNAME: ${{ secrets.USER_NAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}
         run: |
           pytest -v
