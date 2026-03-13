@@ -1,6 +1,5 @@
 from pages.login_page import LoginPage
 from config.config import BASE_URL
-
 def test_login(browser_page):
     page = browser_page
 
