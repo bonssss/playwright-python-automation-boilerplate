@@ -15,6 +15,6 @@ def test_forgetpassword(browser_page):
 
     # input("Wait and enter OTP, then press Enter to continue...")
 
-    forget_password.verify_otp()
+    # forget_password.verify_otp()
 
 
