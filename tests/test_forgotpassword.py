@@ -13,6 +13,6 @@ def test_forgetpassword(browser_page):
     forget_password.insert_email()
     forget_password.click_send_otp_button()
 
-    input("Wait and enter OTP, then press Enter to continue...")
+    # input("Wait and enter OTP, then press Enter to continue...")
 
 
