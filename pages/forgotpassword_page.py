@@ -12,7 +12,7 @@ class Forget_Password(BasePage):
         self.forget_password_button = page.get_by_role("link")
         self.enter_email = page.get_by_role("textbox")
         self.send_otp_button = page.get_by_role("button", name=re.compile(r"Send OTP", re.IGNORECASE))
-        self
+        self.verify_button = page.get_by_role("button", name=re.compile(r"Verify OTP", re.IGNORECASE))
     def forget_pass_click(self):
         self.forget_password_button.click()
         time.sleep(5)
@@ -20,5 +20,7 @@ class Forget_Password(BasePage):
         self.enter_email.fill(USER_NAME)
     def click_send_otp_button(self):
         self.send_otp_button.click()
+    def verify_otp(self):
+        self.verify_button.click()
 
     
